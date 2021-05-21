@@ -200,8 +200,9 @@ export const Weather = (props) => {
     } else if (checker >= 6 && checker < 8) {
       return "GOOD EVENING";
     } else if (
-      time.toLocaleTimeString("en-US")[time.toLocaleTimeString().length - 2] ===
-      "P"
+      time.toLocaleTimeString("en-US")[
+        time.toLocaleTimeString("en-US").length - 2
+      ] === "P"
     ) {
       if (checker >= 8 && checker < 12) {
         return "GOOD NIGHT";
@@ -221,7 +222,7 @@ export const Weather = (props) => {
 
     if (weather) {
       if (
-        time.toLocaleTimeString()[
+        time.toLocaleTimeString("en-US")[
           time.toLocaleTimeString("en-US").length - 2
         ] === "P"
       ) {
