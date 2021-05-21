@@ -192,6 +192,7 @@ export const Weather = (props) => {
     }
   }
   let checker = time.getHours();
+  // console.log(checker);
 
   // greetings
   function greetings(time) {
@@ -224,7 +225,7 @@ export const Weather = (props) => {
 
   function showIcon(time, weather) {
     // let checker = time.toLocaleTimeString("en-US")[0];
-    let checker = time.getHours();
+    // let checker = time.getHours();
 
     if (weather) {
       if (
@@ -232,7 +233,7 @@ export const Weather = (props) => {
           time.toLocaleTimeString("en-US").length - 2
         ] === "P"
       ) {
-        if (checker >= 20 && checker < 24) {
+        if (checker >= 20) {
           // return moon;
           if (weather.weather[0].description === "clear sky") {
             return moon;
@@ -243,6 +244,14 @@ export const Weather = (props) => {
           } else {
             return moonsleep;
           }
+        }
+      } else if (
+        time.toLocaleTimeString("en-US")[
+          time.toLocaleTimeString("en-US").length - 2
+        ] === "A"
+      ) {
+        if (checker >= 0 && checker <= 4) {
+          return moonsleep;
         }
       } else if (weather.weather[0].description === "scattered clouds") {
         return clouds;
