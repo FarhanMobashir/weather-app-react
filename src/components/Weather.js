@@ -194,19 +194,21 @@ export const Weather = (props) => {
 
   // greetings
   function greetings(time) {
-    let checker = time.toLocaleTimeString()[0];
+    let checker = time.toLocaleTimeString("en-US")[0];
     if (checker > 0 && checker < 6) {
       return "GOOD AFTERNOON";
     } else if (checker >= 6 && checker < 8) {
       return "GOOD EVENING";
     } else if (
-      time.toLocaleTimeString()[time.toLocaleTimeString().length - 2] === "P"
+      time.toLocaleTimeString("en-US")[time.toLocaleTimeString().length - 2] ===
+      "P"
     ) {
       if (checker >= 8 && checker < 12) {
         return "GOOD NIGHT";
       }
     } else if (
-      time.toLocaleTimeString()[time.toLocaleTimeString().length - 2] === "A"
+      time.toLocaleTimeString()[time.toLocaleTimeString("en-US").length - 2] ===
+      "A"
     ) {
       if (checker >= 4 && checker < 12) {
         return "GOOD MORNING";
@@ -215,11 +217,13 @@ export const Weather = (props) => {
   }
 
   function showIcon(time, weather) {
-    let checker = time.toLocaleTimeString()[0];
+    let checker = time.toLocaleTimeString("en-US")[0];
 
     if (weather) {
       if (
-        time.toLocaleTimeString()[time.toLocaleTimeString().length - 2] === "P"
+        time.toLocaleTimeString()[
+          time.toLocaleTimeString("en-US").length - 2
+        ] === "P"
       ) {
         if (checker >= 8 && checker < 12) {
           // return moon;
@@ -269,7 +273,7 @@ export const Weather = (props) => {
     <MainWrapper>
       <LeftWrapper>
         <Greetings>{greet}</Greetings>
-        <DateTime>It's {time.toLocaleTimeString()}</DateTime>
+        <DateTime>It's {time.toLocaleTimeString("en-US")}</DateTime>
         <DoodleContainer>
           <Doodle src={doodle}></Doodle>
         </DoodleContainer>
