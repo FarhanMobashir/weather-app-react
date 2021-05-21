@@ -283,16 +283,14 @@ export const Weather = (props) => {
         <WeatherWrapper>
           <WeatherContainer>
             <LocationWrapper>
-              <Location> {weather ? weather.name : "Waiting..."}</Location>
-              <Country> {weather ? weather.sys.country : "Waiting..."}</Country>
+              <Location> {weather ? weather.name : "..."}</Location>
+              <Country> {weather ? weather.sys.country : "..."}</Country>
               <WeatherIconWrapper>
                 <WeatherIcon src={icon}></WeatherIcon>
               </WeatherIconWrapper>
             </LocationWrapper>
             <TemperatureWrapper>
-              <Temperature>
-                {temperature ? temperature : "Waiting..."}
-              </Temperature>
+              <Temperature>{temperature ? temperature : "..."}</Temperature>
               <TemperatureToggle onClick={tempToggle}>
                 {tempType ? "Celcius" : "Fahrenheit"}
               </TemperatureToggle>
