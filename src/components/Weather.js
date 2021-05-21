@@ -191,21 +191,23 @@ export const Weather = (props) => {
       return "";
     }
   }
+  let checker = time.getHours();
 
   // greetings
   function greetings(time) {
-    let checker = time.toLocaleTimeString("en-US")[0];
-    if (checker > 0 && checker < 6) {
-      return "GOOD AFTERNOON";
-    } else if (checker >= 6 && checker < 8) {
+    // let checker = time.toLocaleTimeString("en-US")[0];
+
+    if (checker >= 17 && checker < 20) {
       return "GOOD EVENING";
     } else if (
       time.toLocaleTimeString("en-US")[
         time.toLocaleTimeString("en-US").length - 2
       ] === "P"
     ) {
-      if (checker >= 8 && checker < 12) {
+      if (checker >= 20 && checker < 23) {
         return "GOOD NIGHT";
+      } else if (checker >= 12 && checker < 17) {
+        return "GOOD AFTERNOON";
       }
     } else if (
       time.toLocaleTimeString()[time.toLocaleTimeString("en-US").length - 2] ===
@@ -213,12 +215,16 @@ export const Weather = (props) => {
     ) {
       if (checker >= 4 && checker < 12) {
         return "GOOD MORNING";
+      } else if (checker >= 0 && checker < 4) {
+        return "HAPPY SLEEPING";
       }
     }
   }
+  // console.log(time.getHours());
 
   function showIcon(time, weather) {
-    let checker = time.toLocaleTimeString("en-US")[0];
+    // let checker = time.toLocaleTimeString("en-US")[0];
+    let checker = time.getHours();
 
     if (weather) {
       if (
@@ -226,7 +232,7 @@ export const Weather = (props) => {
           time.toLocaleTimeString("en-US").length - 2
         ] === "P"
       ) {
-        if (checker >= 8 && checker < 12) {
+        if (checker >= 20 && checker < 24) {
           // return moon;
           if (weather.weather[0].description === "clear sky") {
             return moon;
@@ -256,14 +262,16 @@ export const Weather = (props) => {
   }
 
   function tempToggle() {
-    if (tempType) {
-      let fahrenhiet = ((temperature * 9) / 5 + 32).toFixed(2);
-      setTemperature(fahrenhiet);
-      setTemptype(false);
-    } else {
-      let celcius = (((temperature - 32) * 5) / 9).toFixed(2);
-      setTemperature(celcius);
-      setTemptype(true);
+    if (weather) {
+      if (tempType) {
+        let fahrenhiet = ((temperature * 9) / 5 + 32).toFixed(2);
+        setTemperature(fahrenhiet);
+        setTemptype(false);
+      } else {
+        let celcius = (((temperature - 32) * 5) / 9).toFixed(2);
+        setTemperature(celcius);
+        setTemptype(true);
+      }
     }
   }
   let icon = showIcon(time, weather);
