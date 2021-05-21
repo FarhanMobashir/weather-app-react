@@ -230,8 +230,10 @@ export const Weather = (props) => {
           // return moon;
           if (weather.weather[0].description === "clear sky") {
             return moon;
-          } else if (weather.weather[0].description === "scattered clouds") {
+          } else if (weather.weather[0].main === "Clouds") {
             return moonclouds;
+          } else if (weather.weather[0].description === "moderate rain") {
+            return rain;
           } else {
             return moonsleep;
           }
